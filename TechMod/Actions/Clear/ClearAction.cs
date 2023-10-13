@@ -22,7 +22,7 @@ namespace TechMod.Actions.Clear
 
             var msgList = Channel.GetMessagesAsync(amount).ToListAsync().Result;
             var number = msgList.Count;
-            var msg = vote.Message.ReplyAsync(":raised_hand: Deleting messages...").Result;
+            var msg = vote.Message.ReplyAsync($":raised_hand: Deleting {number} messages...").Result;
             try
             {
                 foreach (var x in msgList)
@@ -37,7 +37,7 @@ namespace TechMod.Actions.Clear
                     }
                 }
 
-                msg.ReplyAsync($":white_check_mark: Removed {number} messages!");
+                msg.ReplyAsync($":white_check_mark: Removed messages!");
             }
             catch(Exception ex)
             {

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TechMod.Classes
-{
+namespace TechMod.Classes;
     public static class Utils
     {
         
@@ -30,4 +29,3 @@ namespace TechMod.Classes
             return progressBar.Replace("X", replaceFill).Replace("-", ":black_large_square:");
         }
     }
-}
