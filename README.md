@@ -57,7 +57,7 @@ This will generate an invite link; Save this and put it in your browser, and inv
 As you can see, votes are being used. To prevent people from just abusing this, there must be a 
 minimum amount of votes on an option for it to count, coupled with an option taking priority in the case of a tie.
 
-![](./Techmod/Images/example2.png) 
+![](/Techmod/Images/example2.png) 
 
 To improve readability, the progress bar will be ***red*** when the result would be No, and ***green*** if it would be Yes.
 
@@ -77,17 +77,20 @@ The duration and the length of the progress bar for votes can be found in `Confi
 The ranges commands can used can also be adjusted in that file.
 ### For Members
 #### Locking a channel temporarily
+
 ![](/Techmod/Images/example.png) 
 
 If you need to stop an argument or other drama, you can use this to prevent everyone from sending messages in the channel for 
 anywhere between 30 seconds and 30 minutes. Use `/lock vote [Minutes]` to begin a vote (It's always in minutes, use decimal points.)
 
 #### Muting a member temporarily
+
 ![](/Techmod/Images/example3.png) 
 
 If someone is being a jerk, is posting inappropriate content, etc, you can time them out for anywhere between 30 seconds to 30 minutes. 
 
 #### Clearing Messages
+
 ![](/Techmod/Images/example4.png) 
 
 You can remove anywhere between 10 to 200 messages, from either everyone or a specific person.
