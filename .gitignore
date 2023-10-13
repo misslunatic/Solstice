@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 TechMod/data.db
 TechMod/appsettings.json
+/TechMod/data.db-shm
+/TechMod/data.db-wal
+/data.db
