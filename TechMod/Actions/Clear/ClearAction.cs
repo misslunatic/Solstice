@@ -21,7 +21,12 @@ namespace TechMod.Actions.Clear
                 .WithTitle($"# :white_check_mark: Removing the messages above"+(data.Specific==null?"...":$" from {data.Specific.Username}..."));
 
             var msgList = Channel.GetMessagesAsync(amount).ToListAsync().Result;
-            var number = msgList.Count;
+            var number = ;
+            foreach(var list in msgList)
+            {
+                number += list.Count;
+            }
+
             var msg = vote.Message.ReplyAsync($":raised_hand: Deleting {number} messages...").Result;
             try
             {
