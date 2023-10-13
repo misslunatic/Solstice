@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechMod", "TechMod\TechMod.csproj", "{FEE96E87-7208-4C83-AAAC-03B2625AAF12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEE96E87-7208-4C83-AAAC-03B2625AAF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE96E87-7208-4C83-AAAC-03B2625AAF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE96E87-7208-4C83-AAAC-03B2625AAF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE96E87-7208-4C83-AAAC-03B2625AAF12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C42D9C4-1721-483A-806B-B0FFF73A3E80}
+	EndGlobalSection
+EndGlobal
