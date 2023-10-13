@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ff_cah.Data.InfoDB;
-using ff_cah.Modules;
-using ff_cah.Data;
+using static TechMod.Data.InfoDB;
+using TechMod.Modules;
+using TechMod.Data;
 using TechMod.Actions.Lock;
 
 namespace TechMod.Classes
@@ -24,7 +24,7 @@ namespace TechMod.Classes
         public Dictionary<IUser, bool> Users = new();
         public bool LoadedFromDB = false;
         public object? UserData;
-        public float VoteDuration = 0.5f;
+        public float VoteDuration = Config.MinutesToVote;
 
 
         public int VotedYes => Users.Where(p => p.Value).Count();
@@ -156,7 +156,7 @@ namespace TechMod.Classes
                 .WithDescription(GetDescription()+"\n\n"+GetVoterDesc() + "\n\n" + Utils.GetProgressBar(StartDate, EndDate, DateTime.Now));
 
             Message = await Channel.SendMessageAsync($"A vote has begun! \n***At least {Database.GetMinimum(Guild)} must vote on something for it to happen!***", components: cb.Build(), embed: eb.Build());
-            StepTimer = new System.Timers.Timer((EndDate - StartDate).TotalMilliseconds / Utils.BarLength);
+            StepTimer = new System.Timers.Timer((EndDate - StartDate).TotalMilliseconds / Config.BarLength);
             StepTimer.Elapsed += (object? sender, System.Timers.ElapsedEventArgs args) =>
             {
 

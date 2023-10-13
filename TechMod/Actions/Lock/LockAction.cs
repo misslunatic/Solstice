@@ -1,5 +1,5 @@
 ﻿using Discord;
-using ff_cah;
+using TechMod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 using TechMod.Classes;
-using static ff_cah.Data.InfoDB;
+using static TechMod.Data.InfoDB;
 
 namespace TechMod.Actions.Lock
 {
@@ -44,7 +44,7 @@ namespace TechMod.Actions.Lock
         {
             UpdateLockedMessage();
 
-            StepTimer = new((EndDate - StartDate).TotalMilliseconds / Utils.BarLength); // Steps of ten for progress bar.
+            StepTimer = new((EndDate - StartDate).TotalMilliseconds / Config.BarLength); // Steps of ten for progress bar.
             StepTimer.Elapsed += (object? sender, System.Timers.ElapsedEventArgs args) =>
             {
 
@@ -65,7 +65,7 @@ namespace TechMod.Actions.Lock
 
         public static async void RecoverFromDatabase()
         {
-            foreach (var mute in Database.Mutes)
+            foreach (var mute in Database.ChannelMutes)
             {
                 var g = InteractionHandler._client.GetGuild(mute.Guild);
                 var c = g.GetTextChannel(mute.Channel); // Using GetTextChannel instead of GetChannel for IMessageChannel
@@ -110,7 +110,7 @@ namespace TechMod.Actions.Lock
 
             Message.UnpinAsync();
             Message.ModifyAsync(m => m.Content = "## :unlock: Lock has expired.");
-            Database.Mutes.RemoveRange(Database.Mutes.Where(m => m.Channel == Channel.Id && m.Guild == Guild.Id));
+            Database.ChannelMutes.RemoveRange(Database.ChannelMutes.Where(m => m.Channel == Channel.Id && m.Guild == Guild.Id));
             Database.SaveChanges();
 
           
@@ -157,10 +157,10 @@ namespace TechMod.Actions.Lock
 
 
             // Write to database
-            Database.Mutes.Add(new ChannelMute { Channel = Channel.Id, Guild = Guild.Id, UnmuteTime = EndDate, BeginTime = StartDate, LockMessage = Message.Id, Yes = (ushort)Yes, No = (ushort)No });
+            Database.ChannelMutes.Add(new ChannelMute { Channel = Channel.Id, Guild = Guild.Id, UnmuteTime = EndDate, BeginTime = StartDate, LockMessage = Message.Id, Yes = (ushort)Yes, No = (ushort)No });
             Database.SaveChanges();
             StepTimer.Stop();
-            StepTimer = new((EndDate - StartDate).TotalMilliseconds / Utils.BarLength); // Steps of ten for progress bar.
+            StepTimer = new((EndDate - StartDate).TotalMilliseconds / Config.BarLength); // Steps of ten for progress bar.
             StepTimer.Elapsed += (object? sender, System.Timers.ElapsedEventArgs args) =>
             {
 

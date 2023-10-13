@@ -20,7 +20,7 @@ namespace TechMod.Actions.MuteUser
             var eb = new EmbedBuilder()
                 .WithColor(Color.Green)
                 .WithCurrentTimestamp()
-                .WithTitle($"# :white_check_mark: {user.Username} has been muted for {ts}.")
+                .WithTitle($":white_check_mark: {user.Username} has been muted for {string.Format(@"{0:hh\:mm\:ss}", ts)}.")
                 .WithFooter("\nReason: " + ((MuteUserVoteArgs)vote.UserData).reason);
 
             vote.Message.ReplyAsync("Muted.", embed: eb.Build());

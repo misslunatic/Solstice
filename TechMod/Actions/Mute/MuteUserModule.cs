@@ -1,7 +1,7 @@
 ﻿using Discord;
 using Discord.Interactions;
-using ff_cah;
-using ff_cah.Modules;
+using TechMod;
+using TechMod.Modules;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +37,7 @@ namespace TechMod.Actions.MuteUser
                             await RespondAsync(":x: A reason is required.", ephemeral: true);
                             return;
                         }
-                        if (minutes >= 0.5 & minutes <= 30)
+                        if (minutes >= Config.MuteUserRange.min & minutes <= Config.MuteUserRange.max)
                         {
                             var vote = new MuteUserVote(Context.Channel, Context.Guild, new MuteUserVote.MuteUserVoteArgs(minutes, user, reason));
                             Vote.Votes.Add((Context.Guild, Context.Channel), vote);
@@ -46,7 +46,7 @@ namespace TechMod.Actions.MuteUser
                         }
                         else
                         {
-                            await RespondAsync(":x: Must be at least 0.5 and at most 30.", ephemeral: true);
+                            await RespondAsync($":x: Must be at least {Config.MuteUserRange.min} and at most {Config.MuteUserRange.max}.", ephemeral: true);
                         }
                     }
                     else

@@ -1,19 +1,10 @@
 ﻿using Discord;
-using Discord.WebSocket;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.FileSystemGlobbing;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Reactive;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace ff_cah.Data
+namespace TechMod.Data
 {
     public class DBContextFactory : IDesignTimeDbContextFactory<InfoDB>
     {
@@ -27,7 +18,8 @@ namespace ff_cah.Data
     public class InfoDB : DbContext
     {
         public string DbPath = "";
-      
+
+        [Table("ChannelMute")]
         public class ChannelMute
         {
             public int ChannelMuteId { get; set; }
@@ -41,6 +33,7 @@ namespace ff_cah.Data
 
         }
 
+        [Table("GuildSettings")]
         public class GuildSettings
         {
             public int GuildSettingsId { get; set; }
@@ -52,19 +45,19 @@ namespace ff_cah.Data
 
         public GuildSettings GetSettingsEnsure(IGuild guild)
         {
-            var guilds = Guilds.Where(g => g.Guild == guild.Id);
+            var guilds = ServerSettings.Where(g => g.Guild == guild.Id);
             if (guilds.Any())
             {
                 return guilds.First();
             }
             var newGuild = new GuildSettings { Guild = guild.Id };
-            Guilds.Add(newGuild);
+            ServerSettings.Add(newGuild);
             return newGuild;
         }
 
         public GuildSettings? GetSettings(IGuild guild)
         {
-            var guilds = Guilds.Where(g => g.Guild == guild.Id);
+            var guilds = ServerSettings.Where(g => g.Guild == guild.Id);
             if(guilds.Any())
             {
                 return guilds.First();
@@ -94,7 +87,7 @@ namespace ff_cah.Data
 
         public IRole? UserRequiredRole(IGuild guild)
         {
-            var db = Guilds.Where(r => r.Guild == guild.Id);
+            var db = ServerSettings.Where(r => r.Guild == guild.Id);
             var id = 0xDEADBEEFDEADBEEF;
             if (db.Any())
             {
@@ -111,7 +104,7 @@ namespace ff_cah.Data
 
         public  bool UserHasRequiredRole(IGuild guild, IUser user)
         {
-            var db = Guilds.Where(r => r.Guild == guild.Id);
+            var db = ServerSettings.Where(r => r.Guild == guild.Id);
             var id = 0xDEADBEEFDEADBEEF;
             if (db.Any())
                 id = db.First().VoteRole;
@@ -142,11 +135,13 @@ namespace ff_cah.Data
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = "C:\\Users\\super\\source\\repos\\TechMod\\TechMod\\data.db";
+            Console.WriteLine(Config.DatabasePath);
+            DbPath = Config.DatabasePath;
+            
         }
 
-        public DbSet<ChannelMute> Mutes { get; set; }
-        public DbSet<GuildSettings> Guilds { get; set; }
+        public DbSet<ChannelMute> ChannelMutes { get; set; }
+        public DbSet<GuildSettings> ServerSettings { get; set; }
 
 
         // The following configures EF to create a Sqlite database file in the

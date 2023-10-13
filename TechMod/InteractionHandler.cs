@@ -1,13 +1,13 @@
 ﻿using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
-using ff_cah.Modules;
+using TechMod.Modules;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace ff_cah
+namespace TechMod
 {
     public class InteractionHandler
     {

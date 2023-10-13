@@ -1,5 +1,5 @@
 ﻿using Discord.Interactions;
-using ff_cah.Modules;
+using TechMod.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace TechMod.Actions.Lock
                 {
                     if (!Vote.Votes.ContainsKey((Context.Guild, Context.Channel)))
                     {
-                        if (minutes >= 0.5 & minutes <= 30)
+                        if (minutes >= Config.LockChannelRange.min & minutes <= Config.LockChannelRange.max)
                         {
                             var vote = new LockVote(Context.Channel, Context.Guild, minutes);
                             Vote.Votes.Add((Context.Guild, Context.Channel), vote);
@@ -31,7 +31,7 @@ namespace TechMod.Actions.Lock
                         }
                         else
                         {
-                            await RespondAsync(":x: Must be at least 0.5 and at most 30.", ephemeral: true);
+                            await RespondAsync($":x: Must be at least {Config.LockChannelRange.min} and at most {Config.LockChannelRange.max}.", ephemeral: true);
                         }
                     }
                     else

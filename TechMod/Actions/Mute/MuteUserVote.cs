@@ -51,7 +51,7 @@ namespace TechMod.Actions.MuteUser
 
         public override string GetTitle()
         {
-            return $"Mute {User.Username} for {Duration: 0.00}" + (Duration == 1 ? " minute?" : " minutes?");
+            return $"Mute {User.Username} for {string.Format(@"{0:hh\:mm\:ss}", TimeSpan.FromTicks(((DateTime.Now.AddMinutes(Duration) - DateTime.Now).Ticks)))}?";
         }
 
         public override string GetNoMessage()

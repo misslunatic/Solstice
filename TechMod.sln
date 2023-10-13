@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechMod", "TechMod\TechMod.csproj", "{FEE96E87-7208-4C83-AAAC-03B2625AAF12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechMod", "TechMod\TechMod.csproj", "{FEE96E87-7208-4C83-AAAC-03B2625AAF12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D1F9353-7758-49D0-991D-3684E86F6350}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

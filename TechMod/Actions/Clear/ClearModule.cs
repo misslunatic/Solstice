@@ -1,7 +1,7 @@
 ﻿using Discord;
 using Discord.Interactions;
-using ff_cah;
-using ff_cah.Modules;
+using TechMod;
+using TechMod.Modules;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +28,7 @@ namespace TechMod.Actions.Clear
                     if (!Vote.Votes.ContainsKey((Context.Guild, Context.Channel)))
                     {
                       
-                        if (amount >= 10 & amount <= 200)
+                        if (amount >= Config.ClearRange.min & amount <= Config.ClearRange.max)
                         {
                             var vote = new ClearVote(Context.Channel, Context.Guild, new ClearVote.ClearVoteArgs(amount, user));
                             Vote.Votes.Add((Context.Guild, Context.Channel), vote);
@@ -37,7 +37,7 @@ namespace TechMod.Actions.Clear
                         }
                         else
                         {
-                            await RespondAsync(":x: Must be at least 1 and at most 200.", ephemeral: true);
+                            await RespondAsync($":x: Must be at least {Config.ClearRange.min} and at most {Config.ClearRange.max}.", ephemeral: true);
                         }
                     }
                     else

@@ -1,6 +1,6 @@
 ﻿using Discord;
-using ff_cah.Data;
-using ff_cah.Modules;
+using TechMod.Data;
+using TechMod.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,7 +1,7 @@
 using Discord.Interactions;
 using Discord.WebSocket;
 using Discord;
-using ff_cah;
+using TechMod;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

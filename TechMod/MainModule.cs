@@ -2,7 +2,7 @@
 using Discord.Interactions;
 using Discord.Interactions.Builders;
 using Discord.WebSocket;
-using ff_cah.Data;
+using TechMod.Data;
 using InteractionFramework.Attributes;
 using System;
 using System.Collections.Generic;
@@ -15,9 +15,9 @@ using System.Threading.Tasks;
 using System.Timers;
 using TechMod.Actions.Lock;
 using TechMod.Classes;
-using static ff_cah.Data.InfoDB;
+using static TechMod.Data.InfoDB;
 
-namespace ff_cah.Modules
+namespace TechMod.Modules
 {
     // Interaction modules must be public and inherit from an IInteractionModuleBase
     public class MainModule : InteractionModuleBase<SocketInteractionContext>
@@ -71,7 +71,7 @@ namespace ff_cah.Modules
 
         public static bool HasRequirements(IGuildUser user)
         {
-            return user.GuildPermissions.ManageChannels;
+            return user.GuildPermissions.ManageChannels && user.GuildPermissions.ModerateMembers;
         }
 
         [EnabledInDm(false)]
