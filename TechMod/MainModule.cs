@@ -13,9 +13,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Timers;
-using TechMod.Actions.Lock;
-using TechMod.Classes;
 using static TechMod.Data.InfoDB;
+using TechMod.Classes.Util;
+using TechMod.Classes.Triggers;
+using TechMod.Functions.Votes.Lock;
 
 namespace TechMod.Modules
 {
@@ -64,9 +65,9 @@ namespace TechMod.Modules
             }
 
 
-            public async void Recover()
+        public string Recover()
         {
-            LockAction.RecoverFromDatabase();
+            return LockAction.RecoverFromDatabase().Result;
         }
 
         public static bool HasRequirements(IGuildUser user)
@@ -80,7 +81,7 @@ namespace TechMod.Modules
         {
             if (HasRequirements(Context.Guild.GetUser(Context.User.Id)))
             {
-                var act = VoteManager.RunningInServer(Context.Guild, Context.Channel);
+                var act = BotSystem.DefaultManager.RunningInServer(Context.Guild, Context.Channel);
 
                 if (act != null)
                 {

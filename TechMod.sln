@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechMod.Tests", "TechMod.Tests\TechMod.Tests.csproj", "{5FD976A1-F3C2-402C-AB51-1532BDD5633A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{FEE96E87-7208-4C83-AAAC-03B2625AAF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEE96E87-7208-4C83-AAAC-03B2625AAF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEE96E87-7208-4C83-AAAC-03B2625AAF12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD976A1-F3C2-402C-AB51-1532BDD5633A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD976A1-F3C2-402C-AB51-1532BDD5633A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD976A1-F3C2-402C-AB51-1532BDD5633A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD976A1-F3C2-402C-AB51-1532BDD5633A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
