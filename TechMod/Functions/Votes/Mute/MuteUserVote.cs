@@ -42,6 +42,7 @@ namespace TechMod.Functions.Votes.Mute
         public override void CreateAction(Vote vote)
         {
             var l = new MuteUserAction(Manager, vote);
+            l.BeginAction();
         }
 
         public override string GetDescription()

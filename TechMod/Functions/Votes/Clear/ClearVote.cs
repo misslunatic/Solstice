@@ -38,6 +38,7 @@ namespace TechMod.Functions.Votes.Clear
         public override void CreateAction(Vote vote)
         {
             var l = new ClearAction(Manager, vote);
+            l.BeginAction();
         }
 
         public override string GetDescription()

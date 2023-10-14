@@ -25,6 +25,7 @@ namespace TechMod.Functions.Votes.Lock
         public override void CreateAction(Vote vote)
         {
             var l = new LockAction(Manager, vote);
+            l.BeginAction();
         }
 
         public override string GetDescription()
